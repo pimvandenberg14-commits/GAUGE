@@ -6,51 +6,51 @@
      Hier pas je namen, prijzen, foto's en teksten aan. Eén plek voor de hele site. */
   var PRODUCTS = [
     {
-      id: 'knit-zip-hoodie-antraciet',
-      name: 'Knit Zip Hoodie', color: 'Antraciet', price: 349, group: 'knit-zip-hoodie',
+      id: 'knit-zip-hoodie-charcoal',
+      name: 'Knit Zip Hoodie', color: 'Charcoal', price: 349, group: 'knit-zip-hoodie',
       images: ['lookbook/05.jpg', 'lookbook/01.jpg', 'lookbook/08.jpg', 'lookbook/07.jpg'],
-      alt: 'Knit Zip Hoodie in antraciet',
-      desc: 'Gebreide hoodie met tweewegrits, capuchon met koord en twee steekzakken. Geribde boorden aan mouwen en zoom.',
-      details: ['Tweewegrits in zilverkleur', 'Capuchon met koord', 'Twee steekzakken', 'Geribde boorden'],
-      fit: 'Ruime, rechte pasvorm. Valt normaal: neem je gebruikelijke maat.'
+      alt: 'Knit Zip Hoodie in charcoal',
+      desc: 'Knitted hoodie with a two-way zip, drawstring hood and two front pockets. Ribbed cuffs and hem.',
+      details: ['Silver-tone two-way zip', 'Drawstring hood', 'Two front pockets', 'Ribbed cuffs and hem'],
+      fit: 'Relaxed, straight fit. True to size: take your usual size.'
     },
     {
       id: 'knit-zip-hoodie-ecru',
       name: 'Knit Zip Hoodie', color: 'Ecru', price: 349, group: 'knit-zip-hoodie',
       images: ['lookbook/04.jpg', 'lookbook/06.jpg'],
       alt: 'Knit Zip Hoodie in ecru',
-      desc: 'Gebreide hoodie met tweewegrits, capuchon met koord en twee steekzakken. Geribde boorden aan mouwen en zoom.',
-      details: ['Tweewegrits in zilverkleur', 'Capuchon met koord', 'Twee steekzakken', 'Geribde boorden'],
-      fit: 'Ruime, rechte pasvorm. Valt normaal: neem je gebruikelijke maat.'
+      desc: 'Knitted hoodie with a two-way zip, drawstring hood and two front pockets. Ribbed cuffs and hem.',
+      details: ['Silver-tone two-way zip', 'Drawstring hood', 'Two front pockets', 'Ribbed cuffs and hem'],
+      fit: 'Relaxed, straight fit. True to size: take your usual size.'
     },
     {
       id: 'knit-zip-hoodie-navy',
       name: 'Knit Zip Hoodie', color: 'Navy', price: 349, group: 'knit-zip-hoodie',
       images: ['lookbook/03.jpg', 'lookbook/02.jpg'],
       alt: 'Knit Zip Hoodie in navy',
-      desc: 'Gebreide hoodie met tweewegrits, capuchon met koord en twee steekzakken. Geribde boorden aan mouwen en zoom.',
-      details: ['Tweewegrits in zilverkleur', 'Capuchon met koord', 'Twee steekzakken', 'Geribde boorden'],
-      fit: 'Ruime, rechte pasvorm. Valt normaal: neem je gebruikelijke maat.'
+      desc: 'Knitted hoodie with a two-way zip, drawstring hood and two front pockets. Ribbed cuffs and hem.',
+      details: ['Silver-tone two-way zip', 'Drawstring hood', 'Two front pockets', 'Ribbed cuffs and hem'],
+      fit: 'Relaxed, straight fit. True to size: take your usual size.'
     },
     {
       id: 'ribbed-zip-cardigan-navy',
       name: 'Ribbed Zip Cardigan', color: 'Navy', price: 349, group: 'ribbed-zip-cardigan',
       images: ['lookbook/10.jpg', 'lookbook/09.jpg', 'hero.jpg'],
       alt: 'Ribbed Zip Cardigan in navy',
-      desc: 'Geribd vest met hoge kraag en tweewegrits. Geribde boorden aan mouwen en zoom.',
-      details: ['Tweewegrits in zilverkleur', 'Hoge opstaande kraag', 'Ribsteek over het hele vest', 'Geribde boorden'],
-      fit: 'Rechte pasvorm met een iets verlaagde schouder. Valt normaal: neem je gebruikelijke maat.'
+      desc: 'Ribbed cardigan with a high collar and two-way zip. Ribbed cuffs and hem.',
+      details: ['Silver-tone two-way zip', 'High stand collar', 'Rib knit throughout', 'Ribbed cuffs and hem'],
+      fit: 'Straight fit with a slightly dropped shoulder. True to size: take your usual size.'
     }
   ];
   var SIZES = ['S', 'M', 'L', 'XL'];
   /* Nog in te vullen door GAUGE */
-  var MATERIAL_TEXT = 'Materiaal en wasvoorschrift: nog in te vullen.';
-  var SHIPPING_TEXT = 'Verzend- en retourvoorwaarden: nog in te vullen.';
+  var MATERIAL_TEXT = 'Material and care: to be added.';
+  var SHIPPING_TEXT = 'Shipping and returns: to be added.';
 
   var page = document.body.getAttribute('data-page');
   var isHome = page === 'home';
   function $(id) { return document.getElementById(id); }
-  function price(n) { return '€ ' + n; }
+  function price(n) { return '€' + n; }
   function productUrl(p) { return 'product.html?id=' + p.id; }
 
   /* ═══ ICONEN + LOGO (logo getraceerd uit de lookbookfoto) ═══ */
@@ -78,15 +78,15 @@
     '<a class="header__logo" href="' + (isHome ? '#top' : 'index.html') + '" aria-label="GAUGE — home">' + LOGO + '</a>' +
     '<div class="header__right">' +
       '<div class="header__menu" id="menu">' +
-        '<nav class="nav" aria-label="Hoofdmenu">' +
+        '<nav class="nav" aria-label="Main menu">' +
           '<a href="shop.html"' + shopActive + '>Shop</a>' +
           '<a href="' + home + '#lookbook" data-spy="lookbook">Lookbook</a>' +
           '<a href="' + home + '#story" data-spy="story">Story</a>' +
         '</nav>' +
         '<div class="icons">' +
-          '<a href="#" aria-label="Zoeken">' + icon('search') + '</a>' +
+          '<a href="#" aria-label="Search">' + icon('search') + '</a>' +
           '<a href="#" aria-label="Account">' + icon('account') + '</a>' +
-          '<a href="#" id="cart-link" aria-label="Winkelwagen">' + icon('bag') + '<span class="cart__count" id="cart-count"></span></a>' +
+          '<a href="#" id="cart-link" aria-label="Cart">' + icon('bag') + '<span class="cart__count" id="cart-count"></span></a>' +
         '</div>' +
       '</div>' +
       '<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">' +
@@ -114,10 +114,10 @@
       '<div class="footer__top">' +
         '<a href="' + (isHome ? '#top' : 'index.html') + '" aria-label="GAUGE — home">' + LOGO + '</a>' +
         '<form class="newsletter" id="newsletter" novalidate>' +
-          '<label class="label" for="email">Nieuwsbrief</label>' +
+          '<label class="label" for="email">Newsletter</label>' +
           '<div class="newsletter__row">' +
-            '<input id="email" type="email" name="email" placeholder="E-mailadres" autocomplete="email" required>' +
-            '<button type="submit">Aanmelden</button>' +
+            '<input id="email" type="email" name="email" placeholder="Email address" autocomplete="email" required>' +
+            '<button type="submit">Sign up</button>' +
           '</div>' +
           '<p class="newsletter__msg" id="newsletter-msg" role="status"></p>' +
         '</form>' +
@@ -129,14 +129,14 @@
       '</div>' +
       '<div class="footer__bottom">' +
         '<span>© 2026 GAUGE</span>' +
-        '<nav aria-label="Footermenu"><a href="shop.html">Shop</a><a href="' + home + '#lookbook">Lookbook</a><a href="' + home + '#story">Story</a></nav>' +
+        '<nav aria-label="Footer menu"><a href="shop.html">Shop</a><a href="' + home + '#lookbook">Lookbook</a><a href="' + home + '#story">Story</a></nav>' +
       '</div>';
     /* Nieuwsbrief (demo: koppel hier jullie mailprovider) */
     $('newsletter').addEventListener('submit', function (e) {
       e.preventDefault();
       var input = $('email'), msg = $('newsletter-msg');
-      if (!input.checkValidity()) { msg.textContent = 'Vul een geldig e-mailadres in.'; input.focus(); return; }
-      msg.textContent = 'Bedankt — je staat op de lijst.';
+      if (!input.checkValidity()) { msg.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+      msg.textContent = 'Thank you — you are on the list.';
       input.value = '';
     });
   }
@@ -152,7 +152,7 @@
   function showCartCount() {
     var n = cart.length;
     $('cart-count').textContent = n ? n : '';
-    $('cart-link').setAttribute('aria-label', 'Winkelwagen' + (n ? ' (' + n + ')' : ''));
+    $('cart-link').setAttribute('aria-label', 'Cart' + (n ? ' (' + n + ')' : ''));
   }
   showCartCount();
 
@@ -172,7 +172,7 @@
     el.innerHTML = PRODUCTS.map(card).join('');
   });
   document.querySelectorAll('[data-product-count]').forEach(function (el) {
-    el.textContent = PRODUCTS.length + ' stuks';
+    el.textContent = PRODUCTS.length + ' pieces';
   });
 
   /* ═══ PRODUCTPAGINA ═══ */
@@ -182,7 +182,7 @@
     var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
     if (!p) {
       pdp.className = 'notfound';
-      pdp.innerHTML = '<h1>Dit product bestaat niet (meer).</h1><a class="btn" href="shop.html">Naar de shop</a>';
+      pdp.innerHTML = '<h1>This product is no longer available.</h1><a class="btn" href="shop.html">Go to shop</a>';
     } else {
       document.title = p.name + ' — ' + p.color + ' | GAUGE';
       var siblings = PRODUCTS.filter(function (x) { return x.group === p.group; });
@@ -195,7 +195,7 @@
       pdp.innerHTML =
         '<div class="pdp__gallery">' +
           p.images.map(function (src, i) {
-            return '<figure class="ph" data-ph="' + src + '"><img src="' + src + '" alt="' + p.alt + ', foto ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '></figure>';
+            return '<figure class="ph" data-ph="' + src + '"><img src="' + src + '" alt="' + p.alt + ', photo ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '></figure>';
           }).join('') +
         '</div>' +
         '<div class="pdp__info">' +
@@ -204,19 +204,19 @@
           '<p>' + p.color + '</p>' +
           '<p class="pdp__price">' + price(p.price) + '</p>' +
           '<p class="pdp__desc">' + p.desc + '</p>' +
-          '<div class="pdp__group"><div class="pdp__group-head"><span class="label">Kleur</span></div><div class="colors">' + colors + '</div></div>' +
+          '<div class="pdp__group"><div class="pdp__group-head"><span class="label">Colour</span></div><div class="colors">' + colors + '</div></div>' +
           '<form id="add-form" novalidate>' +
-            '<div class="pdp__group"><div class="pdp__group-head"><span class="label" id="size-label">Maat</span></div>' +
+            '<div class="pdp__group"><div class="pdp__group-head"><span class="label" id="size-label">Size</span></div>' +
               '<fieldset class="sizes" aria-labelledby="size-label">' + sizes + '</fieldset></div>' +
-            '<button class="btn btn--full pdp__add" type="submit">In winkelwagen</button>' +
+            '<button class="btn btn--full pdp__add" type="submit">Add to cart</button>' +
             '<p class="pdp__msg" id="add-msg" role="status"></p>' +
           '</form>' +
           '<div class="accordion">' +
             '<details open><summary>Details</summary><div class="accordion__body"><ul>' +
               p.details.map(function (d) { return '<li>' + d + '</li>'; }).join('') +
               '<li>' + MATERIAL_TEXT + '</li></ul></div></details>' +
-            '<details><summary>Pasvorm</summary><div class="accordion__body">' + p.fit + '</div></details>' +
-            '<details><summary>Verzending &amp; retour</summary><div class="accordion__body">' + SHIPPING_TEXT + '</div></details>' +
+            '<details><summary>Fit</summary><div class="accordion__body">' + p.fit + '</div></details>' +
+            '<details><summary>Shipping &amp; returns</summary><div class="accordion__body">' + SHIPPING_TEXT + '</div></details>' +
           '</div>' +
         '</div>';
 
@@ -224,11 +224,11 @@
         e.preventDefault();
         var chosen = this.querySelector('input[name="size"]:checked');
         var msg = $('add-msg');
-        if (!chosen) { msg.textContent = 'Kies eerst een maat.'; return; }
+        if (!chosen) { msg.textContent = 'Please choose a size first.'; return; }
         cart.push({ id: p.id, size: chosen.value });
         writeCart(cart);
         showCartCount();
-        msg.textContent = 'Toegevoegd: ' + p.name + ', ' + p.color + ', maat ' + chosen.value + '.';
+        msg.textContent = 'Added: ' + p.name + ', ' + p.color + ', size ' + chosen.value + '.';
       });
 
       var related = $('related');
