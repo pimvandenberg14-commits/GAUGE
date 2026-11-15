@@ -47,6 +47,8 @@
   var MATERIAL_TEXT = 'Material and care: to be added.';
   var SHIPPING_TEXT = 'Shipping and returns: to be added.';
 
+  window.GAUGE = { products: PRODUCTS }; /* gedeeld met account.js */
+
   var page = document.body.getAttribute('data-page');
   var isHome = page === 'home';
   function $(id) { return document.getElementById(id); }
@@ -85,7 +87,7 @@
         '</nav>' +
         '<div class="icons">' +
           '<a href="#" aria-label="Search">' + icon('search') + '</a>' +
-          '<a href="#" aria-label="Account">' + icon('account') + '</a>' +
+          '<a href="account.html" aria-label="Account"' + (page === 'account' ? ' aria-current="page"' : '') + '>' + icon('account') + '</a>' +
           '<a href="#" id="cart-link" aria-label="Cart">' + icon('bag') + '<span class="cart__count" id="cart-count"></span></a>' +
         '</div>' +
       '</div>' +
