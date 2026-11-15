@@ -88,7 +88,7 @@
         '<div class="icons">' +
           '<a href="#" aria-label="Search">' + icon('search') + '</a>' +
           '<a href="account.html" aria-label="Account"' + (page === 'account' ? ' aria-current="page"' : '') + '>' + icon('account') + '</a>' +
-          '<a href="#" id="cart-link" aria-label="Cart">' + icon('bag') + '<span class="cart__count" id="cart-count"></span></a>' +
+          '<a href="bag.html" id="cart-link" aria-label="Shopping bag"' + (page === 'bag' ? ' aria-current="page"' : '') + '>' + icon('bag') + '<span class="cart__count" id="cart-count"></span></a>' +
         '</div>' +
       '</div>' +
       '<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">' +
@@ -154,7 +154,7 @@
   function showCartCount() {
     var n = cart.length;
     $('cart-count').textContent = n ? n : '';
-    $('cart-link').setAttribute('aria-label', 'Cart' + (n ? ' (' + n + ')' : ''));
+    $('cart-link').setAttribute('aria-label', 'Shopping bag' + (n ? ' (' + n + ')' : ''));
   }
   showCartCount();
 
@@ -210,7 +210,7 @@
           '<form id="add-form" novalidate>' +
             '<div class="pdp__group"><div class="pdp__group-head"><span class="label" id="size-label">Size</span></div>' +
               '<fieldset class="sizes" aria-labelledby="size-label">' + sizes + '</fieldset></div>' +
-            '<button class="btn btn--full pdp__add" type="submit">Add to cart</button>' +
+            '<button class="btn btn--full pdp__add" type="submit">Add to bag</button>' +
             '<p class="pdp__msg" id="add-msg" role="status"></p>' +
           '</form>' +
           '<div class="accordion">' +
@@ -230,7 +230,7 @@
         cart.push({ id: p.id, size: chosen.value });
         writeCart(cart);
         showCartCount();
-        msg.textContent = 'Added: ' + p.name + ', ' + p.color + ', size ' + chosen.value + '.';
+        msg.innerHTML = 'Added: ' + p.name + ', ' + p.color + ', size ' + chosen.value + '. <a class="text-link" href="bag.html">View bag</a>';
       });
 
       var related = $('related');
@@ -243,13 +243,23 @@
   }
 
   /* ═══ FOTO-PLACEHOLDERS: ontbrekende foto → kader met bestandsnaam ═══ */
-  document.querySelectorAll('.ph').forEach(function (ph) {
-    var img = ph.querySelector('img');
-    if (!img) return;
-    function missing() { ph.classList.add('missing'); }
-    if (img.complete && img.naturalWidth === 0) missing();
-    img.addEventListener('error', missing);
-  });
+  function watchImages(scope) {
+    scope.querySelectorAll('.ph').forEach(function (ph) {
+      var img = ph.querySelector('img');
+      if (!img) return;
+      function missing() { ph.classList.add('missing'); }
+      if (img.complete && img.naturalWidth === 0) missing();
+      img.addEventListener('error', missing);
+    });
+  }
+  watchImages(document);
+
+  /* ═══ Gedeeld met bag.js en account.js ═══ */
+  window.GAUGE.card = card;
+  window.GAUGE.productUrl = productUrl;
+  window.GAUGE.watchImages = watchImages;
+  window.GAUGE.getCart = function () { return cart.slice(); };
+  window.GAUGE.setCart = function (items) { cart = items.slice(); writeCart(cart); showCartCount(); };
 
   /* ═══ Subtiele fade-in bij scrollen ═══ */
   if ('IntersectionObserver' in window) {

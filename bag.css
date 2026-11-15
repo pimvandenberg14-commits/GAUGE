@@ -1,0 +1,73 @@
+/* GAUGE — alleen de Shopping bag-pagina. Gebruikt de variabelen uit styles.css. */
+
+/* Tasje-icoon in de header: actief op deze pagina */
+.icons a[aria-current="page"] { color: var(--wine); }
+
+.bag {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: clamp(32px, 6vw, 96px); align-items: start;
+  padding: 0 var(--gutter);
+}
+
+/* ── Links: items ────────────────────────────────────────────── */
+.bag__items { border-top: 1px solid var(--taupe); }
+.bag-item {
+  display: grid; grid-template-columns: clamp(96px, 12vw, 148px) minmax(0, 1fr) auto;
+  gap: clamp(16px, 2.5vw, 32px);
+  padding: 24px 0; border-bottom: 1px solid var(--taupe);
+}
+.bag-item .ph { aspect-ratio: 4 / 5; display: block; }
+.bag-item__main { display: flex; flex-direction: column; min-width: 0; }
+.bag-item__name { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; color: var(--ink); transition: color .2s; }
+.bag-item__name:hover { color: var(--taupe); }
+.bag-item__meta { margin-top: 6px; font-size: 13px; }
+.bag-item__controls { margin-top: auto; padding-top: 16px; display: flex; align-items: center; gap: 24px; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--taupe); }
+.qty button { width: 34px; height: 34px; color: var(--ink); font-size: 16px; line-height: 1; transition: color .2s; }
+.qty button:hover { color: var(--wine); }
+.qty span { min-width: 28px; text-align: center; font-size: 13px; color: var(--ink); }
+.bag-item__remove { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; border-bottom: 1px solid var(--taupe); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+.bag-item__remove:hover { color: var(--wine); border-color: var(--wine); }
+.bag-item__price { color: var(--ink); font-size: 15px; white-space: nowrap; }
+
+.bag__empty { padding: 40px 0 8px; }
+.bag__empty p { font-family: var(--serif); font-size: clamp(26px, 3vw, 36px); color: var(--ink); margin-bottom: 28px; }
+
+/* ── Rechts: overzicht ───────────────────────────────────────── */
+.summary { position: sticky; top: calc(var(--header-h) + 24px); border: 1px solid var(--taupe); padding: clamp(24px, 3vw, 36px); }
+.summary h2 { font-family: var(--sans); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe); margin-bottom: 20px; }
+.summary__rows { margin: 0; }
+.summary__row { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; font-size: 14px; }
+.summary__row dd { margin: 0; color: var(--ink); text-align: right; }
+.summary__row--discount dd { color: var(--wine); }
+.summary__row--total { margin-top: 14px; padding-top: 18px; border-top: 1px solid var(--taupe); align-items: baseline; }
+.summary__row--total dt { color: var(--ink); }
+.summary__row--total dd { font-family: var(--serif); font-size: 30px; line-height: 1; }
+
+.discount { margin-top: 24px; }
+.discount label { display: block; margin-bottom: 6px; }
+.discount__row { display: flex; border-bottom: 1px solid var(--taupe); }
+.discount__row:focus-within { border-bottom-color: var(--ink); }
+.discount input {
+  flex: 1; min-width: 0; padding: 9px 0; border: 0; border-radius: 0; background: transparent;
+  font: inherit; color: var(--ink); outline: 0; text-transform: uppercase;
+}
+.discount input::placeholder { color: var(--taupe); opacity: 1; text-transform: none; }
+.discount button { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; padding: 9px 0 9px 16px; color: var(--ink); transition: color .2s; }
+.discount button:hover { color: var(--wine); }
+.discount__msg { min-height: 1.65em; margin-top: 8px; font-size: 13px; }
+.discount__msg.is-error { color: var(--wine); }
+.discount__applied { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; color: var(--ink); padding: 9px 0; border-bottom: 1px solid var(--taupe); }
+.discount__applied button { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; padding: 0; }
+
+.summary .btn { margin-top: 16px; border: 0; cursor: pointer; }
+.summary .btn:disabled { background: var(--taupe); cursor: default; }
+.summary__msg { min-height: 1.65em; margin-top: 10px; font-size: 13px; text-align: center; }
+
+@media (max-width: 860px) {
+  .bag { grid-template-columns: 1fr; }
+  .summary { position: static; }
+  .bag-item { grid-template-columns: 96px minmax(0, 1fr); }
+  .bag-item__price { grid-column: 2; }
+  .bag-item__controls { padding-top: 14px; }
+}
