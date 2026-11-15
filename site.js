@@ -73,8 +73,8 @@
   document.body.insertAdjacentHTML('afterbegin', SPRITE);
 
   /* ═══ HEADER ═══ */
-  var home = isHome ? '' : 'index.html';
-  var shopActive = (page === 'shop' || page === 'product') ? ' class="active" aria-current="page"' : '';
+  var ACTIVE = ' class="active" aria-current="page"';
+  var shopActive = (page === 'shop' || page === 'product') ? ACTIVE : '';
   var header = $('header');
   header.innerHTML =
     '<a class="header__logo" href="' + (isHome ? '#top' : 'index.html') + '" aria-label="GAUGE — home">' + LOGO + '</a>' +
@@ -82,8 +82,8 @@
       '<div class="header__menu" id="menu">' +
         '<nav class="nav" aria-label="Main menu">' +
           '<a href="shop.html"' + shopActive + '>Shop</a>' +
-          '<a href="' + home + '#lookbook" data-spy="lookbook">Lookbook</a>' +
-          '<a href="' + home + '#story" data-spy="story">Story</a>' +
+          '<a href="lookbook.html"' + (page === 'lookbook' ? ACTIVE : '') + '>Lookbook</a>' +
+          '<a href="story.html"' + (page === 'story' ? ACTIVE : '') + '>Story</a>' +
         '</nav>' +
         '<div class="icons">' +
           '<a href="#" aria-label="Search">' + icon('search') + '</a>' +
@@ -131,7 +131,7 @@
       '</div>' +
       '<div class="footer__bottom">' +
         '<span>© 2026 GAUGE</span>' +
-        '<nav aria-label="Footer menu"><a href="shop.html">Shop</a><a href="' + home + '#lookbook">Lookbook</a><a href="' + home + '#story">Story</a></nav>' +
+        '<nav aria-label="Footer menu"><a href="shop.html">Shop</a><a href="lookbook.html">Lookbook</a><a href="story.html">Story</a></nav>' +
       '</div>';
     /* Nieuwsbrief (demo: koppel hier jullie mailprovider) */
     $('newsletter').addEventListener('submit', function (e) {
@@ -251,17 +251,8 @@
     img.addEventListener('error', missing);
   });
 
-  /* ═══ HOME: actieve menulink + fade-in ═══ */
+  /* ═══ Subtiele fade-in bij scrollen ═══ */
   if ('IntersectionObserver' in window) {
-    var spyLinks = {};
-    header.querySelectorAll('[data-spy]').forEach(function (a) { spyLinks[a.getAttribute('data-spy')] = a; });
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (spyLinks[e.target.id]) spyLinks[e.target.id].classList.toggle('active', e.isIntersecting);
-      });
-    }, { rootMargin: '-45% 0px -55% 0px' });
-    Object.keys(spyLinks).forEach(function (key) { var s = $(key); if (s) spy.observe(s); });
-
     var reveal = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); }
